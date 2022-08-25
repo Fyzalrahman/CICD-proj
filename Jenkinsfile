@@ -1,12 +1,15 @@
 pipeline {
     agent any
+    tools {
+        maven "MAVEN_PATH"
+    }
     environment {
         PATH = "/opt/apache-maven-3.6.3/bin:$PATH"
     }
     stages {
         stage("SCM Checkout"){
             steps{
-               sh 'https://github.com/ravdy/hello-world.git'
+               git credentialsId: 'DockerCred', url: 'https://github.com/Fyzalrahman/CICD-proj'
             }
         }
         stage("Compile Package"){
