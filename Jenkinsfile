@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         maven "MAVEN_PATH"
-    }
+    }    // For Maven path Either tools or environment variable is required
     environment {
         PATH = "/opt/apache-maven-3.6.3/bin:$PATH"
     }
