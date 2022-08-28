@@ -1,4 +1,4 @@
-pipeline {
+pipeline { 
     agent any
     tools {
         maven 'MAVEN_PATH'
