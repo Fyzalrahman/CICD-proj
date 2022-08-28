@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'MAVEN_PATH'
-    } // hi
+    } 
     environment {
        Cred = credentials("DockerCred")
     }
@@ -29,14 +29,20 @@ pipeline {
               sh 'sudo docker push fyzalrahman/myweb:0.0.2'
             }
         }
-        stage("Remove Docker Image"){
+        stage("Remove Previous Container"){
             steps{
-              sh 'sudo docker rmi fyzalrahman/myweb:0.0.2 '
+                script{  // Mentioning Groovy in Declarative Pipeline
+                    try{
+		                sh 'docker rm -f test_devproj'
+        	        }catch(error){
+		                //  do nothing if there is an exception
+	                }
+                }
             }
         }
         stage("Docker Container Deployment"){
             steps{
-              sh 'sudo docker run -itd -p 8090:8080 --name myweb_devproj fyzalrahman/myweb:0.0.2'
+              sh 'sudo docker run -itd -p 8090:8080 --name test_devproj fyzalrahman/myweb:0.0.2'
             }
         }
     }
