@@ -31,7 +31,7 @@ pipeline {
         }
         stage("Remove Previous Container"){
             steps{
-                script{  // Mentioning Groovy in Declarative Pipeline
+                script{  // Mentioning Groovy in Declarative Pipeline.
                     try{
 		                sh 'docker rm -f test_devproj'
         	        }catch(error){
