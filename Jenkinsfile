@@ -35,6 +35,7 @@ pipeline {
                     try{
 			    
 		                sh 'docker rm -f test_devproj'
+			    sh 'docker rmi fyzalrahman/myweb'
         	        }catch(error){
 		                //  do nothing if there is an exception
 	                }
