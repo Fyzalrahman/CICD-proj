@@ -23,7 +23,7 @@ pipeline {
               sh 'sudo docker build -t fyzalrahman/myweb:0.0.2 .'
             }
         }
-        stage("Docker Image Push"){
+        stage("Docker Image Push"){ 
             steps{
               sh 'sudo docker login -u $Cred_USR -p $Cred_PSW '
               sh 'sudo docker push fyzalrahman/myweb:0.0.2'
