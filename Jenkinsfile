@@ -33,6 +33,7 @@ pipeline {
             steps{
                 script{  // Mentioning Groovy in Declarative Pipeline.
                     try{
+			    
 		                sh 'docker rm -f test_devproj'
         	        }catch(error){
 		                //  do nothing if there is an exception
